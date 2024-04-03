@@ -101,7 +101,23 @@ class iewIndex:
         # calcuate the total IWQ with dynamic weights
         self.IWQ_total = np.round(np.sum(self.IWQ_individual * self.weights_dynamic),2)
 
-        return self.IWQ_total*100, self.IWQ_individual*100, self.weights_dynamic
+
+        ## Outputs
+        self.IWQ_out = {}
+        self.IWQ_out['IEW_Index'] = int(self.IWQ_total*100)
+
+        self.factorIndex = {}
+        self.factorWeight = {}
+        for i in range(len(factor_type)):
+            self.factorIndex[factor_type[i]] = int(self.IWQ_individual[i]*100)
+            self.factorWeight[factor_type[i]] = self.weights_dynamic[i]
+
+        self.IWQ_out['factorIndex'] = self.factorIndex
+        self.IWQ_out['factorWeight'] = self.factorWeight
+
+        return self.IWQ_out
+
+        # return self.IWQ_total*100, self.IWQ_individual*100, self.weights_dynamic
 
 
     def build_graph_df(self, df_data_list, time_of_interest, occ_rate, zones):

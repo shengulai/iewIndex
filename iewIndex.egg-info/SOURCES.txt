@@ -1,7 +1,12 @@
+.gitignore
 README.md
+requirements.txt
+run.py
 setup.py
 iewIndex/__init__.py
 iewIndex/calc_iew.py
+iewIndex/default_user_weights.json
+iewIndex/default_wellness_range.json
 iewIndex.egg-info/PKG-INFO
 iewIndex.egg-info/SOURCES.txt
 iewIndex.egg-info/dependency_links.txt
